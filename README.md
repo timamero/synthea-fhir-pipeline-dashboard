@@ -1,5 +1,7 @@
 # Synthea FHIR → Databricks Delta Pipeline
 
+[View notebook](https://timamero.github.io/synthea-fhir-databricks-pipeline/)
+
 ## Purpose
 
 Loads synthetic patient data from Synthea (FHIR format), parses and flattens the nested JSON using PySpark, and writes the results as queryable Delta tables. Built as a manual-upload workflow — no S3 or external storage connections — so it runs entirely within a Databricks Free Edition workspace, keeping the focus on Databricks/Spark fundamentals.
