@@ -81,7 +81,7 @@ The dashboard renders a single view: **top conditions by gender**, sourced from 
 
 **In progress:**
 
-- [ ] API layer exposing query results as JSON
+- [x] API layer exposing query results as JSON
 - [ ] React dashboard consuming the API and rendering the conditions-by-gender chart
 
 <!-- ## Related Project
