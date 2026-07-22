@@ -60,13 +60,21 @@ export default function App() {
           <BarChart
             data={conditionCounts}
             dataKey="condition_description"
+            withLegend
             series={[
-              { name: 'male', color: 'blue.6' },
-              { name: 'female', color: 'red.6' },
+              { name: 'male', label: 'Male', color: 'blue.6' },
+              { name: 'female', label: 'Female', color: 'red.6' },
             ]}
             orientation="vertical"
-            h={400}
+            h={600}
             w={600}
+            gridAxis="y"
+            yAxisProps={{
+              padding: { top: 20, bottom: 20 },
+              width: 180,
+            }}
+            barProps={{ radius: 8 }}
+            barChartProps={{ barCategoryGap: 12 }}
           />
         ) : (
           <Loader
