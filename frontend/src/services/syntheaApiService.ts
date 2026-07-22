@@ -1,8 +1,4 @@
-export interface ConditionCountsResponse {
-  gender: string;
-  condition_description: string;
-  condition_count: number;
-}
+import { type ConditionCountsResponse } from '../utils/types';
 
 export async function fetchConditionCounts(
   baseUrl: string,
