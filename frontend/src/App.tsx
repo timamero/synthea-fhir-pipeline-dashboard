@@ -3,7 +3,8 @@ import '@mantine/core/styles.css';
 import '@mantine/charts/styles.css';
 
 import { MantineProvider } from '@mantine/core';
-import { Title, Text } from '@mantine/core';
+import { Title, Text, Loader } from '@mantine/core';
+import { BarChart } from '@mantine/charts';
 
 import { fetchConditionCounts } from './services/syntheaApiService';
 import { type PivotedConditionCounts } from './utils/types';
@@ -51,6 +52,26 @@ export default function App() {
         <Text>
           The most frequently recorded conditions, broken down by patient gender
         </Text>
+        {conditionCounts ? (
+          <BarChart
+            data={conditionCounts}
+            dataKey="condition_description"
+            series={[
+              { name: 'male', color: 'blue.6' },
+              { name: 'female', color: 'red.6' },
+            ]}
+            orientation="vertical"
+            h={400}
+            w={600}
+          />
+        ) : (
+          <Loader
+            size="xl"
+            type="dots"
+            color="blue"
+            style={{ marginTop: '20px' }}
+          />
+        )}
       </div>
     </MantineProvider>
   );
