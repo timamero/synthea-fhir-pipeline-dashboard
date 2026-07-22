@@ -54,7 +54,7 @@ export default function App() {
           Top conditions by gender
         </Title>
         <Text>
-          The most frequently recorded conditions, broken down by patient gender
+          The 10 most common conditions overall, broken down by patient gender.
         </Text>
         {conditionCounts ? (
           <BarChart
