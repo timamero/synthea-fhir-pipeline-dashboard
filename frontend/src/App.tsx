@@ -5,14 +5,16 @@ import '@mantine/charts/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { Title, Text } from '@mantine/core';
 
+import { fetchConditionCounts } from './services/syntheaApiService';
+import { type PivotedConditionCounts } from './utils/types';
 import {
-  fetchConditionCounts,
-  type ConditionCountsResponse,
-} from './services/syntheaApiService';
+  pivotByCondition,
+  sortPivotedConditionCountsByGender,
+} from './utils/transforms';
 
 export default function App() {
   const [conditionCounts, setConditionCounts] = useState<
-    ConditionCountsResponse[] | null
+    PivotedConditionCounts[] | null
   >(null);
 
   const baseUrl = 'http://localhost:8080';
@@ -22,7 +24,10 @@ export default function App() {
       const data = await fetchConditionCounts(baseUrl);
 
       if (data) {
-        setConditionCounts(data);
+        const transformedData = sortPivotedConditionCountsByGender(
+          pivotByCondition(data),
+        );
+        setConditionCounts(transformedData);
       } else {
         console.warn('No condition counts data received from the API.');
       }
@@ -31,7 +36,7 @@ export default function App() {
     fetchData();
   }, []);
 
-  console.log('conditionCounts:', conditionCounts);
+  console.log('transformed conditionCounts:', conditionCounts);
 
   return (
     <MantineProvider>
