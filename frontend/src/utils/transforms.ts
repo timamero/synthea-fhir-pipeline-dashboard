@@ -21,7 +21,7 @@ export function pivotByCondition(
   return Object.values(grouped);
 }
 
-export function sortPivotedConditionCountsByGender(
+export function sortByTotalCount(
   data: PivotedConditionCount[],
 ): PivotedConditionCount[] {
   return data.sort(

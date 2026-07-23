@@ -9,7 +9,7 @@ import { fetchConditionCounts } from '../services/syntheaApiService';
 import { type PivotedConditionCount } from '../utils/types';
 import {
   pivotByCondition,
-  sortPivotedConditionCountsByGender,
+  sortByTotalCount,
   limitTopNConditions,
 } from '../utils/transforms';
 
@@ -31,7 +31,7 @@ export default function ConditionsCountChartCard() {
 
       if (data) {
         const transformedData = limitTopNConditions(
-          sortPivotedConditionCountsByGender(pivotByCondition(data)),
+          sortByTotalCount(pivotByCondition(data)),
           LIMIT_TOP_N_CONDITIONS,
         );
         setConditionCounts(transformedData);
