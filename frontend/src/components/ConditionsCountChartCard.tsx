@@ -48,7 +48,14 @@ export default function ConditionsCountChartCard() {
     };
 
     fetchData();
-  }, []);
+  }, [
+    fetchConditionCounts,
+    APP_CONFIG.API_BASE_URL,
+    APP_CONFIG.LIMIT_TOP_N_CONDITIONS,
+    pivotByCondition,
+    sortByTotalCount,
+    limitTopNConditions,
+  ]);
 
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
