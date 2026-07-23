@@ -1,8 +1,8 @@
-import { type ConditionCountsResponse } from '../utils/types';
+import { type ConditionCount } from '../utils/types';
 
 export async function fetchConditionCounts(
   baseUrl: string,
-): Promise<ConditionCountsResponse[]> {
+): Promise<ConditionCount[]> {
   try {
     const response = await fetch(`${baseUrl}/api/condition_counts`);
     if (!response.ok) {

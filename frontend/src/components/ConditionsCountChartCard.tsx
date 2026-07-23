@@ -6,7 +6,7 @@ import { Card, Stack, Title, Text, Loader } from '@mantine/core';
 import { BarChart } from '@mantine/charts';
 
 import { fetchConditionCounts } from '../services/syntheaApiService';
-import { type PivotedConditionCounts } from '../utils/types';
+import { type PivotedConditionCount } from '../utils/types';
 import {
   pivotByCondition,
   sortPivotedConditionCountsByGender,
@@ -20,7 +20,7 @@ const LIMIT_TOP_N_CONDITIONS = 10;
  */
 export default function ConditionsCountChartCard() {
   const [conditionCounts, setConditionCounts] = useState<
-    PivotedConditionCounts[] | null
+    PivotedConditionCount[] | null
   >(null);
 
   const baseUrl = 'http://localhost:8080';

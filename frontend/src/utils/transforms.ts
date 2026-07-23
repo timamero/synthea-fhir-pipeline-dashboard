@@ -1,12 +1,9 @@
-import {
-  type ConditionCountsResponse,
-  type PivotedConditionCounts,
-} from './types';
+import { type ConditionCount, type PivotedConditionCount } from './types';
 
 export function pivotByCondition(
-  rows: ConditionCountsResponse[],
-): PivotedConditionCounts[] {
-  const grouped: Record<string, PivotedConditionCounts> = {};
+  rows: ConditionCount[],
+): PivotedConditionCount[] {
+  const grouped: Record<string, PivotedConditionCount> = {};
 
   rows.forEach(({ gender, condition_description, condition_count }) => {
     if (!grouped[condition_description]) {
@@ -25,8 +22,8 @@ export function pivotByCondition(
 }
 
 export function sortPivotedConditionCountsByGender(
-  data: PivotedConditionCounts[],
-): PivotedConditionCounts[] {
+  data: PivotedConditionCount[],
+): PivotedConditionCount[] {
   return data.sort(
     (a, b) =>
       (b.male ?? 0) + (b.female ?? 0) - ((a.male ?? 0) + (a.female ?? 0)),
@@ -34,8 +31,8 @@ export function sortPivotedConditionCountsByGender(
 }
 
 export function limitTopNConditions(
-  data: PivotedConditionCounts[],
+  data: PivotedConditionCount[],
   n: number,
-): PivotedConditionCounts[] {
+): PivotedConditionCount[] {
   return data.slice(0, n);
 }
