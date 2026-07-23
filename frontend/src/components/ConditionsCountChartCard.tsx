@@ -12,8 +12,7 @@ import {
   sortByTotalCount,
   limitTopNConditions,
 } from '../utils/transforms';
-
-const LIMIT_TOP_N_CONDITIONS = 10;
+import { APP_CONFIG } from '../config';
 
 /**
  * A card component that displays a bar chart of the top conditions by gender.
@@ -23,16 +22,14 @@ export default function ConditionsCountChartCard() {
     PivotedConditionCount[] | null
   >(null);
 
-  const baseUrl = 'http://localhost:8080';
-
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchConditionCounts(baseUrl);
+      const data = await fetchConditionCounts(APP_CONFIG.API_BASE_URL);
 
       if (data) {
         const transformedData = limitTopNConditions(
           sortByTotalCount(pivotByCondition(data)),
-          LIMIT_TOP_N_CONDITIONS,
+          APP_CONFIG.LIMIT_TOP_N_CONDITIONS,
         );
         setConditionCounts(transformedData);
       } else {
