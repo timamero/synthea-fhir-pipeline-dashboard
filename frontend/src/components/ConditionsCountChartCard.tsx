@@ -15,6 +15,9 @@ import {
 
 const LIMIT_TOP_N_CONDITIONS = 10;
 
+/**
+ * A card component that displays a bar chart of the top conditions by gender.
+ */
 export default function ConditionsCountChartCard() {
   const [conditionCounts, setConditionCounts] = useState<
     PivotedConditionCounts[] | null
@@ -40,7 +43,6 @@ export default function ConditionsCountChartCard() {
     fetchData();
   }, []);
 
-  console.log('transformed conditionCounts:', conditionCounts);
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Stack justify="space-between" mb="xs">
