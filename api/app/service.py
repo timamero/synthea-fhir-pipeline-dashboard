@@ -3,20 +3,23 @@
 # - https://docs.databricks.com/aws/en/dev-tools/python-sql-connector
 # - https://docs.databricks.com/aws/en/dev-tools/auth/pat#pat-user
 
-from typing import List
+import logging
 from databricks import sql
 import os
 
 from .schema import ConditionCount
 
+logger = logging.getLogger(__name__)
 
-def get_condition_counts(limit: int) -> List[ConditionCount]:
+
+def get_condition_counts(limit: int) -> list[ConditionCount] | None:
     """
     Fetches the count of conditions grouped by gender and condition description from
     the Databricks SQL database.
     Returns:
         List[ConditionCount]: A list of ConditionCount objects containing the gender,
         condition description, and the count of each condition.
+        None if there was an error executing the query.
     """
     query = f"""
     SELECT p.gender, c.condition_description, COUNT(*) AS condition_count
@@ -26,7 +29,7 @@ def get_condition_counts(limit: int) -> List[ConditionCount]:
     ORDER BY condition_count DESC LIMIT {limit};
     """
     try:
-        formatted_data: List[ConditionCount] = []
+        formatted_data: list[ConditionCount] = []
         with sql.connect(
             server_hostname=os.getenv("DATABRICKS_SERVER_HOSTNAME"),
             http_path=os.getenv("DATABRICKS_HTTP_PATH"),
@@ -47,4 +50,5 @@ def get_condition_counts(limit: int) -> List[ConditionCount]:
                     )
         return formatted_data
     except Exception as e:
-        print(f"Error executing query: {e}")
+        logger.error(f"Error executing query: {e}")
+        return None
