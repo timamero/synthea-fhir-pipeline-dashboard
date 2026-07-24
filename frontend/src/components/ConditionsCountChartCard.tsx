@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import '@mantine/core/styles.css';
 import '@mantine/charts/styles.css';
 
-import { Card, Stack, Title, Text, Loader } from '@mantine/core';
+import { Card, Stack, Title, Loader } from '@mantine/core';
 import { BarChart } from '@mantine/charts';
 
 import { fetchConditionCounts } from '../services/syntheaApiService';
@@ -13,6 +13,8 @@ import {
   limitTopNConditions,
 } from '../utils/transforms';
 import { APP_CONFIG } from '../config';
+import classes from './ConditionsCountChartCard.module.css';
+import CustomText from './CustomText';
 
 /**
  * A card component that displays a bar chart of the top conditions by gender.
@@ -60,12 +62,12 @@ export default function ConditionsCountChartCard() {
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Stack justify="space-between" mb="xs">
-        <Title order={2} mt="md">
+        <Title order={2} mt="md" className={classes.cardTitle}>
           Top conditions by gender
         </Title>
-        <Text>
+        <CustomText>
           The 10 most common conditions overall, broken down by patient gender.
-        </Text>
+        </CustomText>
       </Stack>
 
       <Stack justify="center" align="center" mb="xs">
@@ -99,9 +101,9 @@ export default function ConditionsCountChartCard() {
           />
         )}
         {status === 'error' && (
-          <Text c="red" mt="md" fw={600}>
+          <CustomText c="red" mt="md" fw={600}>
             Error fetching condition counts. Please try again later.
-          </Text>
+          </CustomText>
         )}
       </Stack>
     </Card>
