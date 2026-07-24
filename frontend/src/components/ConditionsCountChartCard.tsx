@@ -60,7 +60,7 @@ export default function ConditionsCountChartCard() {
   ]);
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Card className={classes.card} shadow="sm" radius="md" withBorder>
       <Stack justify="space-between" mb="xs">
         <Title order={2} mt="md" className={classes.cardTitle}>
           Top conditions by gender
@@ -81,12 +81,11 @@ export default function ConditionsCountChartCard() {
               { name: 'female', label: 'Female', color: 'red.6' },
             ]}
             orientation="vertical"
-            h={600}
-            w={600}
+            className={classes.barChart}
             gridAxis="y"
             yAxisProps={{
               padding: { top: 20, bottom: 20 },
-              width: 180,
+              width: 160,
             }}
             barProps={{ radius: 8 }}
             barChartProps={{ barCategoryGap: 12 }}
