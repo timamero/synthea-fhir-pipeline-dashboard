@@ -19,7 +19,7 @@ FHIR Bundles → Databricks (PySpark) → Delta Tables → SQL Warehouse → Fas
 - Parsed FHIR `reference` strings (e.g., `"urn:uuid:abc-123"`) into plain join keys via `split(...)`
 - Collapsed Observation's multi-shape value fields (`valueQuantity`, `valueString`, `valueCodeableConcept`) into one `value` column using `coalesce`
 
-_(schema/flattening diagram)_
+![Flattening diagram](./schema-flattening.png)
 
 ## Validation
 
