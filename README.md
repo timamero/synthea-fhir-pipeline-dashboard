@@ -8,7 +8,9 @@ This project takes synthetic patient data from Synthea (FHIR format) through a f
 
 [View the Databricks Notebook](https://timamero.github.io/synthea-fhir-pipeline-dashboard/)
 
-![Dashboard demo](./docs/synthea-pipeline-dashboard-demo.mp4)
+
+https://github.com/user-attachments/assets/2e860d1a-7b9f-4f2f-b8b0-8e8e24b4cca7
+
 
 ## Overview
 
