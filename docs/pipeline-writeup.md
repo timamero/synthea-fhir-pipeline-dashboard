@@ -39,7 +39,7 @@ FHIR Bundles → Databricks (PySpark) → Delta Tables → SQL Warehouse → Fas
 - API returns data in "long" format (one row per gender + condition pair) — the chart library needs "wide" format (one row per condition, with `male`/`female` as separate keys)
 - Added a client-side pivot step to reshape the API response before charting, then re-sorted and sliced to the top 10 conditions by combined count
 
-_(dashboard screenshot)_
+![React Dashboard](dashboard-screenshot.png)
 
 ## Known Issues & Resolutions
 
