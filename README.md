@@ -39,7 +39,7 @@ API layer — queries the warehouse, returns JSON
 React Dashboard — top conditions by gender
 ```
 
-_(architecture diagram)_
+![Architecture diagram](./docs/architecture.png)
 
 ## Tech Stack
 

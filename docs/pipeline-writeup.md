@@ -8,7 +8,7 @@ Synthetic patient data from Synthea (FHIR format) is parsed and flattened in Dat
 FHIR Bundles → Databricks (PySpark) → Delta Tables → SQL Warehouse → FastAPI → React Dashboard
 ```
 
-_(architecture diagram)_
+![Architecture diagram](./architecture.png)
 
 ## Ingestion & Transformation
 
