@@ -1,10 +1,14 @@
 # Synthea FHIR Pipeline & Dashboard
 
-**Status:** In active development
-
 ## Introduction
 
 This project takes synthetic patient data from Synthea (FHIR format) through a full path: ingestion and transformation in Databricks, storage as queryable Delta tables, exposure through a lightweight API, and visualization in a small React dashboard. It started as a focused Databricks/PySpark learning exercise and has been extended into a small end-to-end application to demonstrate the full stack from raw data to a usable interface.
+
+## Demos
+
+[View the Databricks Notebook](https://timamero.github.io/synthea-fhir-pipeline-dashboard/)
+
+<video controls src="docs/synthea-pipeline-dashboard-demo.mp4" title="Title"></video>
 
 ## Overview
 
